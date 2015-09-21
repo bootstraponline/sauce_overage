@@ -23,7 +23,9 @@ SUMMARY
   end
 
   spec.add_runtime_dependency 'curb', '~> 0.8.8'
+  spec.add_runtime_dependency 'json', '~> 1.8.3'
 
+  spec.add_development_dependency 'webmock', '~> 1.21.0'
   spec.add_development_dependency 'rspec', '~> 3.3.0'
   spec.add_development_dependency 'parallel_tests', '~> 1.7.0'
   spec.add_development_dependency 'appium_thor', '~> 1.0.1'

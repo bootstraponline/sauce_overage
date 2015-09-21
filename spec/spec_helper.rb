@@ -1,6 +1,7 @@
 # rubygems
 require 'bundler/setup'
 require 'pry'
+require 'webmock/rspec'
 
 require 'coveralls'
 Coveralls.wear!

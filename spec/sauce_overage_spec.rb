@@ -13,5 +13,16 @@ module SauceOverage
       expect { Account.new user: nil, key: nil }.to raise_error RuntimeError
       expect { Account.new user: '', key: '' }.not_to raise_error
     end
+
+    it 'attempts to check an account' do
+      user = 'myuser'
+      key = 'mykey'
+
+      stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}").
+         to_return(body: '{"error": "Unauthorized; invalid access key or password"}')
+
+      account = Account.new user: user, key: key
+      account.get_user
+    end
   end
 end

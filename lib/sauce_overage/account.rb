@@ -16,16 +16,14 @@ module SauceOverage
       key.strip!
     end
 
-    def check
+    def get_user
       get                 = Curl::Easy.new("https://saucelabs.com/rest/v1/users/#{user}")
       get.http_auth_types = :basic
       get.username        = user
       get.password        = key
-      response            = get.perform
+      get.perform
 
-      binding.pry
-
-      response
+      JSON.parse(get.body_str || '{}')
     end
   end
 end
