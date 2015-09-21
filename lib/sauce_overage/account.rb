@@ -23,7 +23,33 @@ module SauceOverage
       get.password        = key
       get.perform
 
-      JSON.parse(get.body_str || '{}')
+      result = JSON.parse(get.body_str || '{}')
+      fail result['error'] if result['error']
+      result
+    end
+
+    def minutes
+      get_user['minutes'].to_i
+    end
+
+    def check minutes_limit = nil
+      unless minutes_limit
+        env = ENV['SAUCE_OVERAGE_LIMIT']
+        if env && !env.strip.empty?
+          minutes_limit = env.to_i
+        end
+      end
+
+      fail 'minutes limit must be set' unless minutes_limit
+      fail 'minutes limit must be an int' unless minutes_limit.is_a?(Integer)
+
+      remaining_minutes = minutes
+
+      if remaining_minutes < minutes_limit
+        fail "#{minutes_limit} minute limit breached (#{remaining_minutes} remaining)"
+      end
+
+      nil
     end
   end
 end
