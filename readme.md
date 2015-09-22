@@ -7,10 +7,15 @@
 Automatically prevent tests from running on overage minutes by tracking remaining time
 
 ```bash
-export ENV['SAUCE_USERNAME']="..."
-export ENV['SAUCE_ACCESS_KEY']="..."
-export ENV['SAUCE_OVERAGE_LIMIT']="300"
+export SAUCE_USERNAME="..."
+export SAUCE_ACCESS_KEY="..."
+export SAUCE_OVERAGE_LIMIT="300"
 
-# will raise error if the limit is breached
-sauce_overage
+# if the limit is breached an error is raised and
+# the exit code is set to one
+$ sauce_overage
+300 minute limit breached (120 remaining) (RuntimeError)
+
+$ echo $?
+1
 ```
