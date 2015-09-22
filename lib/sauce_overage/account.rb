@@ -9,11 +9,11 @@ module SauceOverage
     def initialize(opts = {})
       @user = opts.fetch(:user, sauce_user)
       fail 'Must provide user' unless user
-      user.strip!
+      @user = user.strip
 
       @key = opts.fetch(:key, sauce_key)
       fail 'Must provide key' unless key
-      key.strip!
+      @key = key.strip
     end
 
     def get_user
