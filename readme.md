@@ -11,10 +11,9 @@ Automatically prevent tests from running on overage minutes by tracking remainin
 ```bash
 export SAUCE_USERNAME="..."
 export SAUCE_ACCESS_KEY="..."
-export SAUCE_OVERAGE_LIMIT="300"
+# if available minutes are below the limit then the job will fail
+export SAUCE_OVERAGE_LIMIT="300" # minutes
 
-# if the limit is breached an error is raised and
-# the job is marked as failed.
 sauce_overage
 if [ "$?" -ne 0 ]; then
   echo "Jenkins build failed due to lack of sauce minutes"
