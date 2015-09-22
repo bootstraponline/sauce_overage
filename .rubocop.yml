@@ -2,3 +2,17 @@ Style/Documentation:
   Enabled: false
 Style/MethodDefParentheses:
   Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Style/AccessorMethodName:
+  Enabled: false

@@ -24,26 +24,26 @@ module SauceOverage
       key   = account.key
       error = 'Unauthorized; invalid access key or password'
 
-      stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}").
-        to_return(status: 401, body: %Q({"error": "#{error}"}))
+      stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}")
+        .to_return(status: 401, body: %({"error": "#{error}"}))
 
       expect { account.get_user }.to raise_error RuntimeError, error
     end
 
-    def _398;
-      398;
+    def _398
+      398
     end
 
-    def _400;
-      400;
+    def _400
+      400
     end
 
     def stub_valid_get_user
       user = account.user
       key  = account.key
 
-      stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}").
-        to_return(status: 200, body: %Q({"minutes": #{_398}}))
+      stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}")
+        .to_return(status: 200, body: %({"minutes": #{_398}}))
     end
 
     it 'minutes succeeds when using a valid user' do

@@ -6,7 +6,7 @@ module SauceOverage
 
     attr_reader :user, :key
 
-    def initialize opts={}
+    def initialize(opts = {})
       @user = opts.fetch(:user, sauce_user)
       fail 'Must provide user' unless user
       user.strip!
@@ -34,10 +34,8 @@ module SauceOverage
 
     def check minutes_limit = nil
       unless minutes_limit
-        env = ENV['SAUCE_OVERAGE_LIMIT']
-        if env && !env.strip.empty?
-          minutes_limit = env.to_i
-        end
+        env           = ENV['SAUCE_OVERAGE_LIMIT']
+        minutes_limit = env.to_i if env && !env.strip.empty?
       end
 
       fail 'minutes limit must be set' unless minutes_limit
