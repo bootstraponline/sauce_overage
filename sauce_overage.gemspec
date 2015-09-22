@@ -5,7 +5,7 @@ require_relative 'lib/sauce_overage/version'
 Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.2.2'
 
-  spec.name        = 'sauce_rspec'
+  spec.name        = 'sauce_overage'
   spec.version     = SauceOverage::VERSION
   spec.date        = SauceOverage::DATE
   spec.license     = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
