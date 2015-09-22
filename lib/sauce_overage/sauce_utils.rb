@@ -16,11 +16,5 @@ module SauceOverage
       env = ENV['SAUCE_ACCESS_KEY']
       (env && !env.empty?) ? env : nil
     end
-
-    # Returns true if both sauce user and sauce key are defined.
-    # Returns false if they're not defined.
-    def sauce?
-      !!(sauce_user && sauce_key)
-    end
   end
 end
