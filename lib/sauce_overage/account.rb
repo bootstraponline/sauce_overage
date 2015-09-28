@@ -1,9 +1,5 @@
-require_relative 'sauce_utils'
-
 module SauceOverage
   class Account
-    include SauceOverage::SauceUtils
-
     attr_reader :user, :key
 
     def initialize(opts = {})
@@ -21,7 +17,11 @@ module SauceOverage
       get.http_auth_types = :basic
       get.username        = user
       get.password        = key
-      get.perform
+      get.verbose         = true # display more info on errors
+      # Work around
+      # /.rvm/gems/ruby-2.2.2/gems/curb-0.8.8/lib/curl/easy.rb:72:in `perform': SSL connect error (Curl::Err::SSLConnectError)
+      # by retrying for two minutes
+      wait(120) { get.perform }
 
       result = JSON.parse(get.body_str || '{}')
       fail result['error'] if result['error']
