@@ -1,3 +1,12 @@
+#### v1.0.0 2015-09-28
+
+- [4df608e](https://github.com/bootstraponline/sauce_overage/commit/4df608e280a36d5dcc0774a8817daba445d2fcf8) Release 1.0.0
+- [e4b2fe9](https://github.com/bootstraponline/sauce_overage/commit/e4b2fe958376c692b792bf7d8221a2d28f34ff00) Update rubocop rules
+- [4258515](https://github.com/bootstraponline/sauce_overage/commit/4258515e96eb8d8faefb244e8b7f572c47683f61) Update to retry failed SSL requests
+- [d6c7712](https://github.com/bootstraponline/sauce_overage/commit/d6c7712d7f2e3643c2ac1d3016bc2942760e6d27) Update readme.md
+- [50b8528](https://github.com/bootstraponline/sauce_overage/commit/50b852889839d39f138bf35d34277bf08760d3e5) Add Jenkins integration code
+
+
 #### v0.0.2 2015-09-21
 
 - [4abd1f0](https://github.com/bootstraponline/sauce_overage/commit/4abd1f050a18c8f464995cdbe215906dba0c9063) Release 0.0.2
