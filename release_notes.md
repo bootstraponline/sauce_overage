@@ -1,3 +1,9 @@
+#### v1.0.1 2015-10-13
+
+- [9bd0d57](https://github.com/bootstraponline/sauce_overage/commit/9bd0d5792b483a9d3b61b4242d0f72c31f359f04) Release 1.0.1
+- [b3a5e74](https://github.com/bootstraponline/sauce_overage/commit/b3a5e7434984dca5bd8b4447fa52d8f9c7bb0f53) Use hurley and multi_json. Remove curb and json
+
+
 #### v1.0.0 2015-09-28
 
 - [4df608e](https://github.com/bootstraponline/sauce_overage/commit/4df608e280a36d5dcc0774a8817daba445d2fcf8) Release 1.0.0
