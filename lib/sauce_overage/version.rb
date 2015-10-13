@@ -1,4 +1,4 @@
 module SauceOverage
-  VERSION = '1.0.0' unless defined? ::SauceOverage::VERSION
-  DATE    = '2015-09-28' unless defined? ::SauceOverage::DATE
+  VERSION = '1.0.1' unless defined? ::SauceOverage::VERSION
+  DATE    = '2015-10-13' unless defined? ::SauceOverage::DATE
 end
