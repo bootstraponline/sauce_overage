@@ -18,3 +18,5 @@ Style/AccessorMethodName:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
+Style/RescueModifier:
+  Enabled: false

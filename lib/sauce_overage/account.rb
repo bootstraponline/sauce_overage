@@ -12,20 +12,38 @@ module SauceOverage
       @key = key.strip
     end
 
-    def get_user
-      get                 = Curl::Easy.new("https://saucelabs.com/rest/v1/users/#{user}")
-      get.http_auth_types = :basic
-      get.username        = user
-      get.password        = key
-      get.verbose         = true # display more info on errors
-      # Work around
-      # /.rvm/gems/ruby-2.2.2/gems/curb-0.8.8/lib/curl/easy.rb:72:in `perform': SSL connect error (Curl::Err::SSLConnectError)
-      # by retrying for two minutes
-      wait(120) { get.perform }
+    MUTEX = Mutex.new
 
-      result = JSON.parse(get.body_str || '{}')
-      fail result['error'] if result['error']
-      result
+    def hurley_client
+      MUTEX.synchronize do
+        return @hurley_client if @hurley_client
+        client                              = @hurley_client = Hurley::Client.new 'https://saucelabs.com/rest/v1/'
+        client.header[:content_type]        = 'application/json'
+        client.request_options.timeout      = 2 * 60
+        client.request_options.open_timeout = 2 * 60
+        client.url.user                     = user
+        client.url.password                 = key
+
+        # Ensure body JSON string is parsed into a hash
+        # Detect errors and fail so wait_true will retry the request
+        client.after_call do |response|
+          response.body = MultiJson.load(response.body) rescue {}
+
+          client_server_error = %i(client_error server_error).include? response.status_type
+          body_error          = response.body['error']
+
+          if client_server_error || body_error
+            response_error = body_error || ''
+            fail(::Errno::ECONNREFUSED, response_error)
+          end
+        end
+
+        @hurley_client
+      end
+    end
+
+    def get_user
+      wait(2 * 60) { hurley_client.get("users/#{user}").body }
     end
 
     def minutes

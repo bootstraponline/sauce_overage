@@ -27,7 +27,7 @@ module SauceOverage
       stub_request(:get, "https://#{user}:#{key}@saucelabs.com/rest/v1/users/#{user}")
         .to_return(status: 401, body: %({"error": "#{error}"}))
 
-      expect { account.get_user }.to raise_error RuntimeError, error
+      expect { account.get_user }.to raise_error Errno::ECONNREFUSED, /#{error}/
     end
 
     def _398

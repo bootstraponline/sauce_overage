@@ -22,8 +22,8 @@ SUMMARY
     f.match(%r{^(test|spec|features)/})
   end
 
-  spec.add_runtime_dependency 'curb', '~> 0.8.8'
-  spec.add_runtime_dependency 'json', '~> 1.8.3'
+  spec.add_runtime_dependency 'hurley', '~> 0.2'
+  spec.add_runtime_dependency 'multi_json', '~> 1.11.2'
   spec.add_runtime_dependency 'webdriver_utils', '~> 1.0.2'
 
   spec.add_development_dependency 'webmock', '~> 1.21.0'

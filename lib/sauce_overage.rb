@@ -1,6 +1,6 @@
 require 'rubygems'
-require 'curb'
-require 'json'
+require 'hurley'
+require 'multi_json'
 require 'webdriver_utils'
 
 require_relative 'sauce_overage/version'
